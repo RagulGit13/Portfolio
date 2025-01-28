@@ -1,0 +1,393 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ragul A S - Portfolio</title>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        /* General Body Styles */
+        body {
+            margin: 0;
+            font-family: 'Roboto', sans-serif;
+            background-color: #121212;
+            color: #ffffff;
+            line-height: 1.6;
+            box-sizing: border-box;
+            transition: background-color 0.3s ease;
+        }
+        
+        /* Header Styling */
+        header {
+            background-color: #1f1f1f;
+            color: #00d1b2;
+            padding: 2rem 0;
+            text-align: center;
+            box-shadow: 0 8px 12px rgba(0, 0, 0, 0.3);
+            position: relative;
+            z-index: 10;
+        }
+        header h1 {
+            margin: 0;
+            font-size: 3.5rem;
+            font-weight: bold;
+        }
+        header p {
+            margin: 0.5rem 0 0;
+            font-size: 1.5rem;
+            font-weight: 300;
+        }
+        
+        /* Navigation Bar Styling */
+        nav {
+            background: #1a1a1a;
+            padding: 1rem 0;
+            position: sticky;
+            top: 0;
+            z-index: 20;
+        }
+        nav ul {
+            display: flex;
+            justify-content: center;
+            list-style: none;
+            margin: 0;
+            padding: 0;
+        }
+        nav ul li {
+            margin: 0 2rem;
+        }
+        nav ul li a {
+            color: #ffffff;
+            text-decoration: none;
+            font-size: 1.2rem;
+            font-weight: 500;
+            transition: color 0.4s ease;
+        }
+        nav ul li a:hover {
+            color: #00d1b2;
+            text-shadow: 0 0 5px rgba(0, 209, 178, 0.8);
+        }
+        
+        /* Hero Section Styling */
+        .hero {
+            text-align: center;
+            padding: 5rem 0;
+            background: #1f1f1f;
+            position: relative;
+            z-index: 10;
+        }
+        .hero h2 {
+            font-size: 3.5rem;
+            margin-bottom: 1rem;
+            animation: fadeInUp 1.5s ease-out;
+        }
+        .hero p {
+            font-size: 1.4rem;
+            margin-bottom: 3rem;
+            font-weight: 300;
+        }
+        .btn {
+            display: inline-block;
+            background: #00d1b2;
+            color: #121212;
+            padding: 1rem 2.5rem;
+            border: none;
+            border-radius: 35px;
+            text-decoration: none;
+            font-size: 1.2rem;
+            font-weight: 500;
+            transition: background 0.3s ease, transform 0.3s ease;
+        }
+        .btn:hover {
+            background: #00bfa5;
+            transform: scale(1.05);
+        }
+        .resume-btn {
+            display: inline-block;
+            margin-top: 1rem;
+            background: #333;
+            color: #00d1b2;
+            padding: 1rem 2.5rem;
+            border: 2px solid #00d1b2;
+            border-radius: 35px;
+            text-decoration: none;
+            font-size: 1.2rem;
+            font-weight: 500;
+            transition: all 0.3s ease;
+        }
+        .resume-btn:hover {
+            background: #00d1b2;
+            color: #121212;
+            transform: scale(1.05);
+        }
+
+        /* About Section Styling */
+        section {
+            padding: 5rem 2rem;
+        }
+        #about h1 {
+            text-align: center;
+            font-size: 3rem;
+            margin-bottom: 2rem;
+            color: #00d1b2;
+        }
+        #about h4 {
+            font-size: 1.25rem;
+            line-height: 1.8;
+            color: #cccccc;
+            text-align: center;
+        }
+
+        /* Projects Section Styling */
+        #projects h1 {
+            text-align: center;
+            font-size: 3rem;
+            margin-bottom: 3rem;
+            color: #00d1b2;
+        }
+        .cards {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+            gap: 3rem;
+            justify-items: center;
+        }
+        .card {
+            background: #1a1a1a;
+            border-radius: 20px;
+            padding: 2rem;
+            text-align: center;
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.4);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        .card img {
+            max-width: 100%;
+            border-radius: 15px;
+            margin-bottom: 2rem;
+        }
+        .card h3 {
+            margin-bottom: 1rem;
+            font-size: 1.75rem;
+            color: #00d1b2;
+        }
+        .card p {
+            font-size: 1.1rem;
+            color: #cccccc;
+        }
+        .card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 12px 20px rgba(0, 0, 0, 0.5);
+        }
+
+        /* Skills Section Styling */
+        #skills h1 {
+            text-align: center;
+            font-size: 3rem;
+            margin-bottom: 3rem;
+            color: #00d1b2;
+        }
+        .skills {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+            gap: 2rem;
+            text-align: center;
+        }
+        .skills .skill {
+            background: #1a1a1a;
+            border-radius: 15px;
+            padding: 1.5rem;
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3);
+            transition: transform 0.3s ease;
+        }
+        .skills .skill img {
+            width: 60px;
+            height: 60px;
+            margin-bottom: 1rem;
+            transition: transform 0.3s ease;
+        }
+        .skills .skill p {
+            font-size: 1.2rem;
+            color: #ffffff;
+        }
+        .skills .skill:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 8px 15px rgba(0, 0, 0, 0.4);
+        }
+        .skills .skill img:hover {
+            transform: scale(1.1);
+        }
+
+        /* Contact Section Styling */
+        #contact h2 {
+            text-align: center;
+            font-size: 3rem;
+            color: #00d1b2;
+            margin-bottom: 2rem;
+        }
+        .contact ul {
+            list-style: none;
+            padding: 0;
+            text-align: center;
+        }
+        .contact ul li {
+            margin: 1.5rem 0;
+            font-size: 1.2rem;
+        }
+        .contact ul li a {
+            color: #00d1b2;
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+        .contact ul li a:hover {
+            color: #00bfa5;
+        }
+
+        /* Footer Styling */
+        footer {
+            text-align: center;
+            background: #1a1a1a;
+            color: #cccccc;
+            padding: 2rem 0;
+            margin-top: 4rem;
+        }
+        footer p {
+            margin: 0;
+            font-size: 1rem;
+        }
+
+        /* Animations */
+        @keyframes fadeInUp {
+            0% {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            100% {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Ragul A S</h1>
+        <p>AI & Data Science Enthusiast | Transforming Ideas into Reality</p>
+    </header>
+    <nav>
+        <ul>
+            <li><a href="#about">About</a></li>
+            <li><a href="#projects">Projects</a></li>
+            <li><a href="#skills">Skills</a></li>
+            <li><a href="#contact">Contact</a></li>
+        </ul>
+    </nav>
+    <section class="hero">
+        <h2>Welcome to My Portfolio</h2>
+        <p>Discover my journey in AI and Data Science as I build impactful projects and solve real-world problems.</p>
+        <a href="#projects" class="btn">Explore Projects</a>
+        <a href="asserts/resume.pdf" class="resume-btn" target="_blank">View Resume</a>
+    </section>
+    <section id="about">
+        <h1>About Me</h1>
+        <h4>I am an AI and Data Science enthusiast with a passion for leveraging technology to solve real-world problems. With a strong foundation in machine learning, computer vision, and data analysis, I strive to create impactful solutions. I have experience working on innovative AI projects, including healthcare tools and intelligent systems, showcasing my technical and creative skills. Dedicated to continuous learning, I aim to contribute to cutting-edge advancements in the AI and tech industry..</h4>
+        <br>
+        <h4>I completed my SSLC in 2020 at The BVB School, laying a strong academic foundation. In 2022, I graduated from BVB Matric Higher Secondary School with an HSC, specializing in science and mathematics. Currently, I am pursuing a B.Tech degree in Artificial Intelligence and Data Science at Karpagam College of Engineering, Coimbatore, where I am enhancing my technical skills and delving into the latest developments in AI and data-centric technologies.</h4>
+    </section>
+    <section id="projects">
+        <h1>Projects</h1>
+        <div class="cards">
+            <div class="card">
+                <img src="asserts/project1.png" alt="Project 1 Image">
+                <h3>Project 1: MRI/CT Scan Report Generator</h3>
+                <p>Developed an AI-powered tool to process MRI and CT scans, transforming complex medical data into easy-to-understand reports for patients and professionals. This solution bridges the gap between advanced medical technology and accessible healthcare communication..</p>
+            </div>
+            <div class="card">
+                <img src="asserts/project2.png" alt="Project 2 Image">
+                <h3>Project 2: Gym AI Personal Trainer </h3>
+                <p>Developed a "Gym Personal AI Trainer" using MediaPipe and computer vision for workout detection and correctness classification. Integrated a Django backend, HTML/CSS interface, and a diet planner for personalized calorie and meal suggestions..</p>
+            </div>
+            <div class="card">
+                <img src="asserts/project3.png" alt="Project 3 Image">
+                <h3>Project 3: MLOPs Salary Predictor</h3>
+                <p>Developed an MLOps system for salary prediction using Python, with a Django backend and Streamlit for deployment. Integrated HTML/CSS for the web interface, containerized the application with Docker, and pushed it to a GitHub repository. 
+                    .</p>
+            </div>
+        </div>
+    </section>
+    <section id="skills">
+        <h1>Skills</h1>
+        <div class="skills">
+            <div class="skill">
+                <img src="asserts/python.png" alt="Python">
+                <p>Python</p>
+            </div>
+            <div class="skill">
+                <img src="asserts/java.png" alt="Java">
+                <p>Java</p>
+            </div>
+            <!-- <div class="skill">
+                <img src="asserts/js.png" alt="JavaScript">
+                <p>JavaScript</p>
+            </div> -->
+            <div class="skill">
+                <img src="asserts/html.png" alt="HTML">
+                <p>HTML</p>
+            </div>
+            <div class="skill">
+                <img src="asserts/css.png" alt="CSS">
+                <p>CSS</p>
+            </div>
+            <!-- <div class="skill">
+                <img src="asserts/react.png" alt="React">
+                <p>React</p>
+            </div> -->
+            <div class="skill">
+                <img src="asserts/ml.png" alt="Machine Learning">
+                <p>Machine Learning</p>
+            </div>
+            <div class="skill">
+                <img src="asserts/r.png" alt="R">
+                <p>R</p>
+            </div>
+            <div class="skill">
+                <img src="asserts/mdb.png" alt="mongodb">
+                <p>Mongodb</p>
+            </div>
+            <div class="skill">
+                <img src="asserts/tableau.png" alt="tableau">
+                <p>Tableau</p>
+            </div>
+            <div class="skill">
+                <img src="asserts/git.png" alt="git">
+                <p>Git</p>
+            </div>
+            <div class="skill">
+                <img src="asserts/docker.png" alt="docker">
+                <p>Docker</p>
+            </div>
+            <div class="skill">
+                <img src="asserts/github.png" alt="github">
+                <p>GitHub</p>
+            </div>
+            <div class="skill">
+                <img src="asserts/jenkins.png" alt="jenkins">
+                <p>Jenkins</p>
+            </div>
+            
+        </div>
+    </section>
+    <section id="contact">
+        <div class="contact">
+            <h2>Contact Me</h2>
+            <ul>
+                <li>Email: <a href="mailto:ragulpavizham@gmail.com">ragulpavizham@gmail.com.com</a></li>
+                <li>Phone: <a href="mob:+91 7708179699">+91 77081 79699</a></li>
+                <li>LinkedIn: <a href="https://www.linkedin.com/in/ragul1309/" target="_blank">linkedin.com/in/ragul1309</a></li>
+                <li>GitHub: <a href="https://github.com/RagulGit13" target="_blank">github.com/RagulGit13</a></li>
+            </ul>
+        </div>
+    </section>
+    <footer>
+        <p>&copy; 2025 Ragul A S. All rights reserved.</p>
+    </footer>
+</body>
+</html>
