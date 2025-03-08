@@ -21,17 +21,19 @@
         header {
             background-color: #1f1f1f;
             color: #00d1b2;
-            padding: 2rem 0;
+            padding: 1rem 0;
             text-align: center;
             box-shadow: 0 8px 12px rgba(0, 0, 0, 0.3);
             position: relative;
             z-index: 10;
             margin-top: 130px;
+            transition: transform 0.3s ease;
         }
         header h1 {
             margin: 0;
             font-size: 3.5rem;
             font-weight: bold;
+            transition: color 0.3s ease;
         }
         header p {
             margin: 0.5rem 0 0;
@@ -42,7 +44,7 @@
         /* Navigation Bar Styling */
         nav {
             background: #1a1a1a;
-            padding: 1rem 0;
+            padding: 1.8rem 0;
             display: flex;
             top: 0;
             z-index: 20;
@@ -50,6 +52,7 @@
             justify-content: center;
             position:fixed;
             width: 100%;
+            transition: background 0.3s ease;
         }
         nav ul {
             display: flex;
@@ -66,11 +69,12 @@
             text-decoration: none;
             font-size: 1.2rem;
             font-weight: 500;
-            transition: color 0.4s ease;
+            transition: color 0.4s ease, transform 0.3s ease;
         }
         nav ul li a:hover {
             color: #00d1b2;
             text-shadow: 0 0 5px rgba(0, 209, 178, 0.8);
+            transform: scale(1.1);
         }
         
         /* Hero Section Styling */
@@ -80,6 +84,7 @@
             background: #1f1f1f;
             position: relative;
             z-index: 10;
+            overflow: hidden;
         }
         .hero h2 {
             font-size: 3.5rem;
@@ -101,11 +106,12 @@
             text-decoration: none;
             font-size: 1.2rem;
             font-weight: 500;
-            transition: background 0.3s ease, transform 0.3s ease;
+            transition: background 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease;
         }
         .btn:hover {
             background: #00bfa5;
             transform: scale(1.05);
+            box-shadow: 0 4px 20px rgba(0, 209, 178, 0.5);
         }
         .resume-btn {
             display: inline-block;
@@ -124,11 +130,19 @@
             background: #00d1b2;
             color: #121212;
             transform: scale(1.05);
+            box-shadow: 0 4px 20px rgba(0, 209, 178, 0.5);
         }
 
         /* About Section Styling */
         section {
             padding: 5rem 2rem;
+            opacity: 0; /* Start hidden */
+            transform: translateY(20px); /* Start slightly below */
+            transition: opacity 0.5s ease, transform 0.5s ease; /* Transition for animation */
+        }
+        section.visible {
+            opacity: 1; /* Fade in */
+            transform: translateY(0); /* Move to original position */
         }
         #about h1 {
             text-align: center;
@@ -157,17 +171,20 @@
             justify-items: center;
         }
         .card {
+            position: relative; /* Position relative for absolute positioning of GitHub icon */
             background: #1a1a1a;
             border-radius: 20px;
             padding: 2rem;
             text-align: center;
             box-shadow: 0 6px 12px rgba(0, 0, 0, 0.4);
             transition: transform 0.3s ease, box-shadow 0.3s ease;
+            overflow: hidden; /* To contain the GitHub icon */
         }
         .card img {
             max-width: 100%;
             border-radius: 15px;
             margin-bottom: 2rem;
+            transition: transform 0.3s ease;
         }
         .card h3 {
             margin-bottom: 1rem;
@@ -183,6 +200,20 @@
             box-shadow: 0 12px 20px rgba(0, 0, 0, 0.5);
         }
 
+        /* GitHub Icon Styling */
+        .github-icon {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            width: 25px;
+            height: 25px;
+            opacity: 0.8;
+            transition: opacity 0.3s ease;
+        }
+        .github-icon:hover {
+            opacity: 1;
+        }
+
         /* Skills Section Styling */
         #skills h1 {
             text-align: center;
@@ -192,8 +223,8 @@
         }
         .skills {
             display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
-            gap: 2rem;
+            grid-template-columns: repeat(auto-fill, minmax(110px, 1fr));
+            gap: 5rem;
             text-align: center;
         }
         .skills .skill {
@@ -260,6 +291,29 @@
             font-size: 1rem;
         }
 
+        /* Back to Top Button Styling */
+        .back-to-top {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            background: #00d1b2;
+            color: #121212;
+            border: none;
+            border-radius: 50%;
+            width: 35px;
+            height: 35px;
+            font-size: 1.5rem;
+            cursor: pointer;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+            transition: background 0.3s ease, transform 0.3s ease, opacity 0.3s ease;
+            display: none; /* Hidden by default */
+            z-index: 100;
+        }
+        .back-to-top:hover {
+            background: #00bfa5;
+            transform: scale(1.1);
+        }
+
         /* Animations */
         @keyframes fadeInUp {
             0% {
@@ -294,7 +348,7 @@
     </section>
     <section id="about">
         <h1>About Me</h1>
-        <h4>I am an AI and Data Science enthusiast with a passion for leveraging technology to solve real-world problems. With a strong foundation in machine learning, computer vision, and data analysis, I strive to create impactful solutions. I have experience working on innovative AI projects, including healthcare tools and intelligent systems, showcasing my technical and creative skills. Dedicated to continuous learning, I aim to contribute to cutting-edge advancements in the AI and tech industry..</h4>
+        <h4>I am an AI and Data Science enthusiast with a passion for leveraging technology to solve real-world problems. With a strong foundation in machine learning, computer vision, and data analysis, I strive to create impactful solutions. I have experience working on innovative AI projects, including healthcare tools and intelligent systems, showcasing my technical and creative skills. Dedicated to continuous learning, I aim to contribute to cutting-edge advancements in the AI and tech industry.</h4>
         <br>
         <h4>I completed my SSLC in 2020 at The BVB School, laying a strong academic foundation. In 2022, I graduated from BVB Matric Higher Secondary School with an HSC, specializing in science and mathematics. Currently, I am pursuing a B.Tech degree in Artificial Intelligence and Data Science at Karpagam College of Engineering, Coimbatore, where I am enhancing my technical skills and delving into the latest developments in AI and data-centric technologies.</h4>
     </section>
@@ -304,18 +358,26 @@
             <div class="card">
                 <img src="asserts/project1.png" alt="Project 1 Image">
                 <h3>Project 1: MRI/CT Scan Report Generator</h3>
-                <p>Developed an AI-powered tool to process MRI and CT scans, transforming complex medical data into easy-to-understand reports for patients and professionals. This solution bridges the gap between advanced medical technology and accessible healthcare communication..</p>
+                <p>Developed an AI-powered tool to process MRI and CT scans, transforming complex medical data into easy-to-understand reports for patients and professionals. This solution bridges the gap between advanced medical technology and accessible healthcare communication.</p>
+                <a href="https://github.com/yourusername/project1" target="_blank">
+                    <img src="https://img.icons8.com/ios-filled/50/00d1b2/github.png" alt="GitHub" class="github-icon">
+                </a>
             </div>
             <div class="card">
                 <img src="asserts/project2.png" alt="Project 2 Image">
-                <h3>Project 2: Gym AI Personal Trainer </h3>
-                <p>Developed a "Gym Personal AI Trainer" using MediaPipe and computer vision for workout detection and correctness classification. Integrated a Django backend, HTML/CSS interface, and a diet planner for personalized calorie and meal suggestions..</p>
+                <h3>Project 2: Gym AI Personal Trainer</h3>
+                <p>Developed a "Gym Personal AI Trainer" using MediaPipe and computer vision for workout detection and correctness classification. Integrated a Django backend, HTML/CSS interface, and a diet planner for personalized calorie and meal suggestions.</p>
+                <a href="https://github.com/ANBARASU82/squatanalysis_frontend.git" target="_blank">
+                    <img src="https://img.icons8.com/ios-filled/50/00d1b2/github.png" alt="GitHub" class="github-icon">
+                </a>
             </div>
             <div class="card">
                 <img src="asserts/project3.png" alt="Project 3 Image">
                 <h3>Project 3: MLOPs Salary Predictor</h3>
-                <p>Developed an MLOps system for salary prediction using Python, with a Django backend and Streamlit for deployment. Integrated HTML/CSS for the web interface, containerized the application with Docker, and pushed it to a GitHub repository. 
-                    .</p>
+                <p>Developed an MLOps system for salary prediction using Python, with a Django backend and Streamlit for deployment. Integrated HTML/CSS for the web interface, containerized the application with Docker, and pushed it to a GitHub repository.</p>
+                <a href="https://github.com/RagulGit13/Salary_Prediction.git" target="_blank">
+                    <img src="https://img.icons8.com/ios-filled/50/00d1b2/github.png" alt="GitHub" class="github-icon">
+                </a>
             </div>
         </div>
     </section>
@@ -330,10 +392,6 @@
                 <img src="asserts/java.png" alt="Java">
                 <p>Java</p>
             </div>
-            <!-- <div class="skill">
-                <img src="asserts/js.png" alt="JavaScript">
-                <p>JavaScript</p>
-            </div> -->
             <div class="skill">
                 <img src="asserts/HTML.png" alt="HTML">
                 <p>HTML</p>
@@ -342,10 +400,6 @@
                 <img src="asserts/css.png" alt="CSS">
                 <p>CSS</p>
             </div>
-            <!-- <div class="skill">
-                <img src="asserts/react.png" alt="React">
-                <p>React</p>
-            </div> -->
             <div class="skill">
                 <img src="asserts/ml.png" alt="Machine Learning">
                 <p>Machine Learning</p>
@@ -378,7 +432,6 @@
                 <img src="asserts/jenkins.png" alt="jenkins">
                 <p>Jenkins</p>
             </div>
-            
         </div>
     </section>
     <section id="contact">
@@ -395,5 +448,48 @@
     <footer>
         <p>&copy; 2025 Ragul A S. All rights reserved.</p>
     </footer>
+
+    <!-- Back to Top Button -->
+    <button class="back-to-top" id="backToTopBtn" title="Go to top">&#8679;</button>
+
+    <script>
+        // Get the button
+        const backToTopBtn = document.getElementById("backToTopBtn");
+
+        // Show the button when scrolling down
+        window.onscroll = function() {
+            if (document.body.scrollTop > 100 || document.documentElement.scrollTop > 100) {
+                backToTopBtn.style.display = "block";
+                backToTopBtn.style.opacity = "1"; // Fade in effect
+            } else {
+                backToTopBtn.style.opacity = "0"; // Fade out effect
+                setTimeout(() => {
+                    backToTopBtn.style.display = "none"; // Hide after fade out
+                }, 300); // Match the duration of the fade out
+            }
+        };
+
+        // Scroll to top when the button is clicked
+        backToTopBtn.onclick = function() {
+            window.scrollTo({
+                top: 0,
+                behavior: "smooth"
+            });
+        };
+
+        // Animate sections on scroll
+        const sections = document.querySelectorAll("section");
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add("visible");
+                }
+            });
+        });
+
+        sections.forEach(section => {
+            observer.observe(section);
+        });
+    </script>
 </body>
 </html>
